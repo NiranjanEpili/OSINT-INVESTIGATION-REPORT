@@ -1,307 +1,503 @@
-# OSINT Web Reconnaissance Tool 🔍
+<div align="center">
 
-A comprehensive, professional-grade cybersecurity tool for gathering detailed information about websites and exporting intelligence reports in PDF and JSON formats.
+# 🔍 OSINT Investigation Tool
 
-## Features ✨
+### Advanced Website Reconnaissance & Security Analysis Platform
 
-### Information Gathering
-- **WHOIS Information**: Domain registrar, creation/expiration dates, registrant details
-- **DNS Records**: A, AAAA, MX, NS, TXT, CNAME, SOA records
-- **IP Geolocation**: IP address, hostname, reverse DNS lookup
-- **SSL/TLS Certificate Analysis**: Certificate issuer, validity period, subject alternative names
-- **HTTP Headers Analysis**: Server type, powered-by headers, security headers
-- **Technology Detection**: Identifies frameworks (React, Vue, Angular, etc.), CMS (WordPress, Drupal)
-- **Email Extraction**: Finds email addresses on the website
-- **Subdomain Enumeration**: Discovers accessible subdomains
-- **Server Information**: Detailed server and network analysis
+[![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com)
 
-### Export Capabilities
-- **PDF Reports**: Professional, detailed, formatted reports
-- **JSON Export**: Raw data export for programmatic access
-- **Organized Tabs**: Categorized information for easy navigation
+[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Documentation](#-documentation)
 
-## Installation 📦
+![OSINT Tool Banner](https://via.placeholder.com/800x200/667eea/ffffff?text=OSINT+Investigation+Tool)
 
-### Prerequisites
-- Python 3.7+
-- pip (Python package manager)
-
-### Setup Instructions
-
-1. **Clone or download the project**
-   ```bash
-   cd path/to/osint-tool
-   ```
-
-2. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-   Or install individually:
-   ```bash
-   pip install requests dnspython python-whois certifi beautifulsoup4 
-   pip install Pillow reportlab validators email-validator phonenumbers
-   ```
-
-3. **Run the tool**
-   ```bash
-   python osint_tool.py
-   ```
-
-## Usage 🚀
-
-### GUI Interface
-1. Launch the application: `python osint_tool.py`
-2. Enter the target website URL in the input field (e.g., `https://example.com`)
-3. Click **"Start Scan"** to begin gathering information
-4. Monitor progress with the progress bar
-5. View results in organized tabs
-6. Export results as PDF or JSON
-
-### Command-Line Arguments (Optional)
-```bash
-python osint_tool.py --url https://example.com --output report.pdf
-```
-
-## Information Collected 📊
-
-### Domain Analysis
-- Registrar information
-- Domain creation and expiration dates
-- Name servers
-- Registrant organization
-- Domain status
-
-### Network Analysis
-- Primary IP address
-- Hostname
-- Reverse DNS information
-- Geolocation data
-
-### SSL/TLS Security
-- Certificate issuer
-- Subject alternative names (SANs)
-- Certificate validity period
-- Serial number
-- Protocol version
-
-### Web Technologies
-- Web server software
-- Frameworks and libraries
-- CMS detection
-- Frontend frameworks
-- Backend technologies
-
-### Email Discovery
-- Emails found on website and subpages
-- Contact information extraction
-
-### Subdomain Enumeration
-- Accessible subdomains
-- Common subdomain patterns (www, mail, ftp, api, etc.)
-
-## Report Structure 📋
-
-### PDF Report Includes:
-1. **Executive Summary** - Key findings table
-2. **Domain Information** - Complete WHOIS data
-3. **Network Information** - IP and SSL details
-4. **Technologies** - Detected tech stack
-5. **Subdomains** - Discovered subdomains
-6. **Email Addresses** - Extracted contacts
-7. **DNS Records** - Detailed DNS analysis
-
-### JSON Export
-- Complete raw data in structured JSON format
-- Suitable for automated processing
-- Can be imported into other tools
-
-## Examples 💡
-
-### Basic Scan
-```
-Target: https://github.com
-- Discovers GitHub's IP address
-- Retrieves SSL certificate information
-- Analyzes HTTP headers
-- Detects technologies (Rails, Octicons, etc.)
-- Lists accessible subdomains
-- Extracts contact emails
-```
-
-### Export Options
-```
-PDF: Professional report with tables and formatting
-JSON: Raw structured data for analysis
-```
-
-## Security & Ethical Usage ⚖️
-
-This tool is designed for:
-- ✓ Authorized penetration testing
-- ✓ Bug bounty hunting
-- ✓ Security research
-- ✓ OSINT for authorized targets
-- ✓ Website reconnaissance for security audits
-
-**Important**:
-- Only use this tool on websites you own or have explicit permission to scan
-- Respect `robots.txt` and website terms of service
-- Use responsibly and ethically
-- Always obtain proper authorization before testing
-- This tool is for educational and authorized security testing only
-
-## Troubleshooting 🔧
-
-### Issue: "Failed to retrieve WHOIS data"
-- Some domains may have restricted WHOIS information
-- Try again or check domain availability
-
-### Issue: SSL Certificate Error
-- Some websites may not have valid SSL certificates
-- The tool will still retrieve available information
-
-### Issue: Subdomain enumeration returns few results
-- Uses common subdomain list
-- Custom enumeration lists can be added for more results
-
-### Issue: ModuleNotFoundError
-- Ensure all requirements are installed: `pip install -r requirements.txt`
-- Check Python version (3.7+)
-
-## Architecture 🏗️
-
-```
-osint_tool.py
-├── OSINTTool (Core scanning engine)
-│   ├── get_whois_info()
-│   ├── get_dns_records()
-│   ├── get_ip_info()
-│   ├── get_ssl_certificate()
-│   ├── get_http_headers()
-│   ├── detect_technologies()
-│   ├── extract_emails()
-│   ├── enumerate_subdomains()
-│   └── generate_pdf_report()
-└── OSINTToolGUI (Tkinter interface)
-    ├── setup_ui()
-    ├── perform_scan()
-    ├── update_results()
-    ├── export_pdf()
-    └── export_json()
-```
-
-## Libraries Used 📚
-
-| Library | Purpose |
-|---------|---------|
-| `requests` | HTTP requests |
-| `dnspython` | DNS queries |
-| `whois` | WHOIS data retrieval |
-| `ssl` | SSL certificate analysis |
-| `beautifulsoup4` | HTML parsing |
-| `reportlab` | PDF generation |
-| `validators` | URL validation |
-| `tkinter` | GUI framework |
-
-## Features Roadmap 🚀
-
-Future enhancements:
-- [ ] Passive DNS lookups
-- [ ] Historical data from archive.org
-- [ ] Shodan integration
-- [ ] Vulnerability scanner
-- [ ] API endpoints discovery
-- [ ] Directory brute-forcing
-- [ ] Custom scanning profiles
-- [ ] Database support for multi-target scans
-- [ ] Export to Excel/CSV
-- [ ] REST API for automation
-
-## Performance Tips ⚡
-
-1. **Faster Scans**: Disable unnecessary checks
-2. **Resource Usage**: Close other applications
-3. **Network**: Use stable internet connection
-4. **Timeout**: Default timeout is 10 seconds per request
-
-## Common Findings 🎯
-
-Typical OSINT scan reveals:
-- Technology stack used by target
-- Infrastructure providers (AWS, Cloudflare, etc.)
-- Email addresses and contacts
-- Related domains and subdomains
-- Security configuration issues
-- Outdated technologies
-- Potential attack surface
-
-## API Reference 🔌
-
-### Core Functions
-
-```python
-from osint_tool import OSINTTool
-
-osint = OSINTTool()
-
-# Get domain information
-whois_data = osint.get_whois_info("example.com")
-
-# Get DNS records
-dns_data = osint.get_dns_records("example.com")
-
-# Get IP information
-ip_data = osint.get_ip_info("example.com")
-
-# Get SSL certificate
-ssl_data = osint.get_ssl_certificate("example.com")
-
-# Detect technologies
-tech = osint.detect_technologies("https://example.com")
-
-# Extract emails
-emails = osint.extract_emails("https://example.com")
-
-# Enumerate subdomains
-subdomains = osint.enumerate_subdomains("example.com")
-
-# Generate PDF report
-osint.generate_pdf_report(data, "report.pdf")
-```
-
-## Disclaimer ⚠️
-
-This tool is provided for educational and authorized security testing purposes only. Users are responsible for ensuring they have proper authorization before scanning any websites. Unauthorized use may violate laws in your jurisdiction. The authors assume no liability for misuse.
-
-## License 📄
-
-This project is provided as-is for educational purposes.
-
-## Support 💬
-
-For issues, questions, or improvements:
-1. Check the troubleshooting section
-2. Review the code documentation
-3. Verify all dependencies are installed
-
-## Author Notes 📝
-
-This OSINT tool demonstrates:
-- Python GUI development with Tkinter
-- Network and security reconnaissance techniques
-- API integration and data gathering
-- Professional report generation
-- Ethical hacking practices
-
-Perfect for:
-- Cybersecurity students
-- Penetration testers
-- Bug bounty hunters
-- Security researchers
-- System administrators
+</div>
 
 ---
 
-**Remember**: Always scan responsibly and ethically! 🛡️
+A comprehensive, professional-grade cybersecurity tool with **20+ investigation features**, dual-mode interface (Browser + Desktop), and beautiful PDF reports for security analysis and OSINT gathering.
+
+---
+
+## 📋 Table of Contents
+
+- [🌟 Overview](#-overview)
+- [✨ Key Features](#-key-features)
+- [📸 Screenshots](#-screenshots)
+- [🚀 Installation](#-installation)
+- [🎯 Quick Start](#-quick-start)
+- [📖 Usage Guide](#-usage-guide)
+- [🔬 Advanced Features](#-advanced-features)
+- [🏗️ Architecture](#-architecture)
+- [📚 Documentation](#-documentation)
+- [⚠️ Ethical Use](#%EF%B8%8F-ethical-use--legal-disclaimer)
+- [🤝 Contributing](#-contributing)
+- [🏆 Acknowledgments](#-acknowledgments)
+
+---
+
+## 🌟 Overview
+
+**OSINT Investigation Tool** is a comprehensive, dual-mode platform for gathering and analyzing open-source intelligence on websites. Built with Python, it combines powerful reconnaissance capabilities with an intuitive interface, making it perfect for security researchers, students, and professionals.
+
+### 🎯 Why Choose This Tool?
+
+<div align="center">
+
+| Feature | Description |
+|---------|-------------|
+| 🌐 **Dual Mode** | Browser-based web interface + Traditional desktop GUI |
+| 🔍 **20+ Features** | Comprehensive investigation capabilities |
+| 📄 **Beautiful Reports** | Professional PDF exports with security scoring |
+| 🔒 **Security Analysis** | Advanced security header analysis and scoring |
+| 🚀 **Fast & Efficient** | Multi-threaded scanning for optimal performance |
+| 🎓 **Educational** | Perfect for learning OSINT techniques |
+
+</div>
+
+---
+
+## ✨ Key Features
+
+### 🔎 Investigation Capabilities
+
+<table>
+<tr>
+<td width="50%">
+
+#### Basic OSINT
+- ✅ **WHOIS Information**
+  - Domain registration details
+  - Registrar information
+  - Expiration dates
+- ✅ **DNS Analysis**
+  - A, AAAA, MX, NS records
+  - TXT, CNAME, SOA records
+- ✅ **SSL/TLS Inspection**
+  - Certificate validation
+  - Issuer information
+  - Expiry dates
+
+</td>
+<td width="50%">
+
+#### Advanced Features
+- 🔌 **Port Scanning**
+  - 21 common ports
+  - Service identification
+- 🔒 **Security Headers**
+  - 8 header analysis
+  - Security score (0-100%)
+- 🤖 **CMS Detection**
+  - WordPress, Joomla, Drupal
+  - Shopify, Wix, Magento
+
+</td>
+</tr>
+</table>
+
+### 🎨 Interface Options
+
+<div align="center">
+
+| Mode | Description | Best For |
+|------|-------------|----------|
+| 🌐 **Browser Mode** | Modern web interface with real-time updates | Remote access, modern UI |
+| 💻 **Desktop Mode** | Tkinter-based GUI with 11 organized tabs | Offline use, traditional interface |
+
+</div>
+
+### 📊 Additional Intelligence
+
+<details>
+<summary><b>🌐 Network Intelligence</b></summary>
+
+- IP Geolocation & mapping
+- Reverse DNS lookup
+- ISP & organization identification
+- Hosting provider detection
+- Server fingerprinting
+
+</details>
+
+<details>
+<summary><b>📝 Content Analysis</b></summary>
+
+- Meta tags extraction (all types)
+- Open Graph & Twitter Card data
+- Email & phone harvesting
+- robots.txt parsing
+- Sitemap discovery
+
+</details>
+
+<details>
+<summary><b>📱 Social Intelligence</b></summary>
+
+- Facebook profiles/pages
+- Twitter accounts
+- Instagram profiles
+- LinkedIn company pages
+- YouTube channels
+- GitHub repositories
+
+</details>
+
+---
+
+## 📸 Screenshots
+
+<div align="center">
+
+### 🌐 Browser Mode Interface
+![Browser Mode](https://via.placeholder.com/700x350/667eea/ffffff?text=Modern+Web+Interface)
+
+### 💻 Desktop Mode GUI
+![Desktop Mode](https://via.placeholder.com/700x350/764ba2/ffffff?text=Professional+Desktop+GUI)
+
+### 📊 Security Analysis
+![Security Analysis](https://via.placeholder.com/700x350/4caf50/ffffff?text=Security+Score+Dashboard)
+
+### 📄 PDF Report Sample
+![PDF Report](https://via.placeholder.com/700x350/ff9800/ffffff?text=Beautiful+PDF+Reports)
+
+</div>
+
+---
+
+## 🚀 Installation
+
+### Prerequisites
+
+- **Python 3.7+** - [Download Here](https://www.python.org/downloads/)
+- **pip** - Package installer (included with Python)
+- **Internet Connection** - For package installation and scanning
+
+### 📦 Quick Install
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/osint-investigation-tool.git
+
+# Navigate to directory
+cd osint-investigation-tool
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Create required directories
+python setup_dirs.py
+
+# Fix WHOIS package (if needed)
+python COMPLETE_FIX.py
+```
+
+### Manual Installation
+
+```bash
+# Install packages individually
+pip install flask python-whois requests beautifulsoup4
+pip install reportlab dnspython validators
+```
+
+### ✅ Verify Installation
+
+```bash
+# Test all imports
+python test_imports.py
+```
+
+---
+
+## 🎯 Quick Start
+
+### Method 1: Easy Launch (Recommended)
+
+```bash
+# Windows
+START.bat
+
+# Linux/Mac
+python enhanced_launch.py
+```
+
+**Choose your mode:**
+```
+┌─────────────────────────────────────┐
+│  OSINT Investigation Tool           │
+├─────────────────────────────────────┤
+│  [1] 🌐 Browser Mode                │
+│  [2] 💻 Desktop Mode                │
+│  [3] ❌ Exit                         │
+└─────────────────────────────────────┘
+```
+
+### Method 2: Direct Launch
+
+#### 🌐 Browser Mode
+```bash
+python web_app.py
+# Then open: http://localhost:5000
+```
+
+#### 💻 Desktop Mode
+```bash
+python enhanced_osint_tool.py
+```
+
+---
+
+## 📖 Usage Guide
+
+### Basic Workflow
+
+1. **Launch** the tool (Browser or Desktop mode)
+2. **Enter** target URL (e.g., `https://example.com`)
+3. **Start** investigation and wait 30-90 seconds
+4. **Browse** results in organized tabs
+5. **Export** as professional PDF or JSON
+
+### Browser Mode Steps
+
+1. Start browser mode: `python web_app.py`
+2. Open `http://localhost:5000` in browser
+3. Enter target URL
+4. Click "Start Investigation"
+5. Monitor real-time progress
+6. View results and export
+
+### Desktop Mode Steps
+
+1. Launch: `python enhanced_osint_tool.py`
+2. Enter URL in input field
+3. Click "▶ Start Investigation"
+4. Browse 11 organized tabs
+5. Export reports
+
+---
+
+## 🔬 Advanced Features
+
+### 🔒 Security Scoring System
+
+<div align="center">
+
+| Score Range | Level | Description |
+|-------------|-------|-------------|
+| 75-100% 🟢 | **Excellent** | Strong security posture |
+| 50-74% 🟡 | **Good** | Adequate protection |
+| 25-49% 🟠 | **Fair** | Needs improvement |
+| 0-24% 🔴 | **Poor** | Critical issues |
+
+</div>
+
+### 🔌 Port Scanning
+
+Scans **21 common ports**:
+```
+HTTP (80, 8080)    HTTPS (443, 8443)    SSH (22)    
+FTP (21)           SMTP (25)            DNS (53)
+MySQL (3306)       PostgreSQL (5432)    RDP (3389)
+And more...
+```
+
+### 🎨 Technology Detection
+
+Identifies **50+ technologies**:
+- Web servers (Apache, Nginx, IIS)
+- CMS platforms (WordPress, Joomla, Drupal)
+- JavaScript frameworks (React, Vue, Angular)
+- Analytics & CDNs
+
+---
+
+## 🏗️ Architecture
+
+### Project Structure
+
+```
+osint-investigation-tool/
+│
+├── 📁 Core Application
+│   ├── enhanced_launch.py          # Main launcher
+│   ├── enhanced_osint_tool.py      # Desktop GUI
+│   ├── web_app.py                  # Web interface
+│   ├── advanced_scanner.py         # Investigation engine
+│   └── enhanced_pdf.py             # PDF generator
+│
+├── 📁 Configuration
+│   ├── requirements.txt            # Dependencies
+│   └── setup_dirs.py              # Directory setup
+│
+├── 📁 Documentation
+│   ├── README.md                  # This file
+│   ├── QUICK_START_GUIDE.md       # Quick start
+│   └── README_ENHANCED.md         # Complete docs
+│
+└── 📁 Reports
+    └── (Generated PDF/JSON reports)
+```
+
+### Technology Stack
+
+| Component | Technology |
+|-----------|------------|
+| **Backend** | Python 3.7+ |
+| **Web Framework** | Flask |
+| **GUI Framework** | Tkinter |
+| **PDF Generation** | ReportLab |
+| **Web Scraping** | BeautifulSoup4 |
+
+---
+
+## 📚 Documentation
+
+### Available Guides
+
+- 📘 [README_ENHANCED.md](README_ENHANCED.md) - Complete documentation
+- 📗 [QUICK_START_GUIDE.md](QUICK_START_GUIDE.md) - Step-by-step tutorial
+- 📙 [TROUBLESHOOTING_HINDI.txt](TROUBLESHOOTING_HINDI.txt) - Hindi troubleshooting
+- 📕 [BROWSER_MODE_FIX.txt](BROWSER_MODE_FIX.txt) - Browser mode fixes
+
+---
+
+## ⚠️ Ethical Use & Legal Disclaimer
+
+### 📜 Important Notice
+
+This tool is designed for **EDUCATIONAL** and **AUTHORIZED TESTING** purposes only.
+
+### ✅ Acceptable Use
+
+- ✓ Testing your own websites
+- ✓ Authorized security assessments
+- ✓ Academic research and learning
+- ✓ Penetration testing with permission
+
+### ❌ Prohibited Use
+
+- ✗ Unauthorized access attempts
+- ✗ Malicious activities
+- ✗ Privacy violations
+- ✗ Any unlawful activities
+
+**YOU are responsible for how you use this tool.**
+
+---
+
+## 🎓 Use Cases
+
+| Use Case | Description |
+|----------|-------------|
+| 🔒 **Security Assessments** | Evaluate website security posture |
+| 🏢 **Competitive Analysis** | Understand competitor tech stack |
+| 🕵️ **Digital Forensics** | Gather digital evidence |
+| 🎯 **Threat Intelligence** | Identify potential threats |
+| 📚 **Academic Research** | Learn OSINT techniques |
+
+---
+
+## 🐛 Known Issues & Fixes
+
+<details>
+<summary><b>WHOIS Error Fix</b></summary>
+
+```bash
+pip uninstall whois -y
+pip install python-whois
+```
+Or run: `python COMPLETE_FIX.py`
+
+</details>
+
+<details>
+<summary><b>Browser Mode Issues</b></summary>
+
+```bash
+# Install Flask
+pip install flask
+
+# Test browser mode
+python test_browser_mode.py
+
+# Or use Desktop Mode (easier)
+python enhanced_launch.py → Option 2
+```
+
+</details>
+
+---
+
+## 🤝 Contributing
+
+Contributions welcome! Here's how:
+
+1. **Fork** the repository
+2. **Create** a feature branch
+3. **Commit** your changes
+4. **Push** to the branch
+5. **Open** a Pull Request
+
+---
+
+## 📊 Statistics
+
+<div align="center">
+
+![Features](https://img.shields.io/badge/features-20%2B-brightgreen)
+![Lines of Code](https://img.shields.io/badge/lines%20of%20code-2500%2B-blue)
+![Dependencies](https://img.shields.io/badge/dependencies-8-orange)
+
+### Investigation Capabilities
+
+| Category | Count |
+|----------|-------|
+| **Scan Types** | 20+ |
+| **Ports Scanned** | 21 |
+| **Security Headers** | 8 |
+| **CMS Detected** | 6+ |
+| **Export Formats** | 2 |
+
+</div>
+
+---
+
+## 🏆 Acknowledgments
+
+### Built With
+- [Python](https://www.python.org/) - Core language
+- [Flask](https://flask.palletsprojects.com/) - Web framework
+- [ReportLab](https://www.reportlab.com/) - PDF generation
+- [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/) - Web scraping
+
+---
+
+## 📝 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 📞 Support
+
+### Getting Help
+
+- 📖 Check [Documentation](README_ENHANCED.md)
+- 🐛 Report Issues
+- 💬 Community Discussions
+
+---
+
+<div align="center">
+
+### Made with ❤️ for the Security Community
+
+**[⬆ Back to Top](#-osint-investigation-tool)**
+
+---
+
+© 2024 OSINT Investigation Tool | [Documentation](README_ENHANCED.md) | [Quick Start](QUICK_START_GUIDE.md)
+
+</div>
